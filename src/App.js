@@ -1,8 +1,16 @@
 import React from 'react';
 import './index.scss'
-import Card from "./components/Card";
+import './components/Card/Card.module.scss'
+import Index from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+
+const arr = [
+    {title: 'Nike Blazer Mid Suede', price: 12999, imageUrl: '/img/sneakers/1.jpg'},
+    {title: 'Nike Air Max 270', price: 15600, imageUrl: '/img/sneakers/2.jpg'},
+    {title: 'Blazer Mid Suede ', price: 8499, imageUrl: '/img/sneakers/3.jpg'},
+    {title: 'Puma x Aka Boku Future Rider ', price: 8999, imageUrl: '/img/sneakers/4.jpg'},
+]
 
 const App = () => {
     return (
@@ -19,7 +27,9 @@ const App = () => {
                 </div>
 
                 <div className="d-flex">
-                    <Card/>
+                    {arr.map((obj) => (
+                        <Index title={obj.title} price={obj.price} imageUrl={obj.imageUrl} />
+                    ))}
                 </div>
             </div>
 
