@@ -35,25 +35,47 @@ header {
   }
 }
 
+.cartEmpty {
+  text-align: center;
 
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
 
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
 
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(3px);
+      }
+    }
 
-
-.button {
-  background: #ffffff;
-  border: 1px solid #8f8e8e;
-  box-sizing: border-box;
-  border-radius: 8px;
-  height: 32px;
-  width: 32px;
-  cursor: pointer;
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
 }
 
 .search-block {
   border: 1px solid #8f8e8e;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    right: 15px;
+    height: 18px;
+    width: 18px;
+    top: 14px;
+  }
 
   input {
     border: 0;
@@ -64,17 +86,18 @@ header {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
 .items {
   flex: 1;
+  //overflow: scroll;
 }
 
 .drawer {
@@ -87,9 +110,9 @@ header {
   background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  overflow: scroll;
 
   items {
-    overflow: auto;
     margin-bottom: 40px;
   }
 
