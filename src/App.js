@@ -120,7 +120,7 @@ const App = () => {
                 />
 
                 <Routes>
-                    <HashRouter basename="/">
+                    <HashRouter>
                         <Route
                             path=''
                             exact
