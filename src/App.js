@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Header from "./components/Header";
 import Index from "./components/Drawer"
 import axios from "axios";
-import {HashRouter, Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import AppContext from "./context";
@@ -46,17 +46,8 @@ const App = () => {
                 setCartItems(prev => prev.filter(item => Number(item.parentId) !== Number(obj.id)))
                 await axios.delete(`https://639cb88016d1763ab152745f.mockapi.io/cart/${findItem.id}`)
             } else {
-                setCartItems((prev) => [...prev, obj])
                 const {data} = await axios.post('https://639cb88016d1763ab152745f.mockapi.io/cart', obj)
-                setCartItems((prev) => prev.map(item => {
-                    if (item.parentId === data.parentId) {
-                        return {
-                            ... item,
-                            id: data.id
-                        }
-                    }
-                    return item
-                }))
+                setCartItems((prev) => [...prev, data])
             }
         } catch (error) {
             alert('Ошибка при добавлени в корзину')
@@ -120,36 +111,34 @@ const App = () => {
                 />
 
                 <Routes>
-                    <HashRouter>
-                        <Route
-                            path=''
-                            exact
-                            element={<Home
-                                items={items}
-                                cartItems={cartItems}
-                                searchValue={searchValue}
-                                setSearchValue={setSearchValue}
-                                onAddToFavorite={onAddToFavorite}
-                                onChangeSearchInput={onChangeSearchInput}
-                                onAddToCart={onAddToCart}
-                                isLoading={isLoading}
-                            />
-                            }
+                    <Route
+                        path='/'
+                        exact
+                        element={<Home
+                            items={items}
+                            cartItems={cartItems}
+                            searchValue={searchValue}
+                            setSearchValue={setSearchValue}
+                            onAddToFavorite={onAddToFavorite}
+                            onChangeSearchInput={onChangeSearchInput}
+                            onAddToCart={onAddToCart}
+                            isLoading={isLoading}
                         />
-                        <Route
-                            exact
-                            path='favorites'
-                            element={
-                                <Favorites />}
-                        />
+                        }
+                    />
+                    <Route
+                        exact
+                        path='/favorites'
+                        element={
+                            <Favorites />}
+                    />
 
-                        <Route
-                            exact
-                            path='orders'
-                            element={
-                                <Orders />}
-                        />
-                    </HashRouter>
+                    <Route
+                        exact
+                        path='/orders'
+                        element={
+                            <Orders />}
+                    />
                 </Routes>
             </div>
         </AppContext.Provider>
