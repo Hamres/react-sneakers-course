@@ -38,7 +38,7 @@ const Index = ({onClose, onRemove, items = [], opened}) => {
                 <h2 className='d-flex justify-between mb-30'>
                     Корзина
                     <img onClick={onClose} className='removeBtn'
-                         src="img/btn-remove.svg"
+                         src='img/btn-remove.svg'
                          alt="Close"/>
                 </h2>
 
@@ -59,7 +59,7 @@ const Index = ({onClose, onRemove, items = [], opened}) => {
                                     <img
                                         onClick={() => onRemove(obj.id)}
                                         className='removeBtn'
-                                        src="img/btn-remove.svg"
+                                        src='img/btn-remove.svg'
                                         alt="Remove"
                                     />
                                 </div>
@@ -75,7 +75,7 @@ const Index = ({onClose, onRemove, items = [], opened}) => {
                             </ul>
                             <button disabled={isLoading} onClick={onClickOrder} className='greenButton'>
                                 Оформить заказ
-                                <img src="img/arrow.svg"
+                                <img src='img/arrow.svg'
                                      alt="Arrow"/>
                             </button>
                         </div>
