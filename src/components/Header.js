@@ -22,7 +22,7 @@ const Header = (props) => {
                     <span>{totalPrice} руб.</span>
                 </li>
                 <li>
-                    <Link to='favorites'>
+                    <Link to='/favorites'>
                         <img
                             className='mr-15 cu-p'
                             width={18} height={18}
@@ -32,7 +32,7 @@ const Header = (props) => {
                     </Link>
                 </li>
                 <li>
-                    <Link to='orders'>
+                    <Link to='/orders'>
                         <img
                              width={18}
                              height={18}
