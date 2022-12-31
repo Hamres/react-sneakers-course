@@ -76,7 +76,7 @@ const Index = ({onClose, onRemove, items = [], opened}) => {
                             <button disabled={isLoading} onClick={onClickOrder} className='greenButton'>
                                 Оформить заказ
                                 <img src='img/arrow.svg'
-                                     alt="Arrow"/>
+                                     alt='Arrow'/>
                             </button>
                         </div>
                     </div>
