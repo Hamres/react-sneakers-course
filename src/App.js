@@ -46,8 +46,19 @@ const App = () => {
                 setCartItems(prev => prev.filter(item => Number(item.parentId) !== Number(obj.id)))
                 await axios.delete(`https://639cb88016d1763ab152745f.mockapi.io/cart/${findItem.id}`)
             } else {
-                const {data} = await axios.post('https://639cb88016d1763ab152745f.mockapi.io/cart', obj)
-                setCartItems((prev) => [...prev, data])
+                setCartItems((prev) => [...prev, obj]);
+                const { data } = await axios.post('https://639cb88016d1763ab152745f.mockapi.io/cart', obj);
+                setCartItems((prev) =>
+                    prev.map((item) => {
+                        if (item.parentId === data.parentId) {
+                            return {
+                                ...item,
+                                id: data.id,
+                            }
+                        }
+                        return item
+                    }),
+                )
             }
         } catch (error) {
             alert('Ошибка при добавлени в корзину')
@@ -112,7 +123,7 @@ const App = () => {
 
                 <Routes>
                     <Route
-                        path='/'
+                        path=''
                         exact
                         element={<Home
                             items={items}
@@ -128,14 +139,14 @@ const App = () => {
                     />
                     <Route
                         exact
-                        path='/favorites'
+                        path='favorites'
                         element={
                             <Favorites />}
                     />
 
                     <Route
                         exact
-                        path='/orders'
+                        path='orders'
                         element={
                             <Orders />}
                     />
